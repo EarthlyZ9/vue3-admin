@@ -12,7 +12,7 @@
         <input
           id="floatingEmail"
           v-model="email"
-          requried
+          required
           type="text"
           class="form-control"
           placeholder="User Email"
@@ -54,18 +54,18 @@
 
 <script>
 import { ref } from 'vue';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'vue-router';
 export default {
   setup(){
-    const email = ref("");
-    const password = ref("");
-    const confirmPassword = ref("");
+    const email = ref('');
+    const password = ref('');
+    const confirmPassword = ref('');
     const router = useRouter();
     //validation 추가
     const register = () => {
       console.log(password, confirmPassword.value);
-      if (password.value == confirmPassword.value) {
+      if (password.value === confirmPassword.value) {
         createUserWithEmailAndPassword(getAuth(), email.value, password.value, confirmPassword.value)
         .then((data) => {
           alert('Successfully registered!');
@@ -73,13 +73,13 @@ export default {
         })
         .catch((error) => {
           switch(error.code) {
-            case "auth/email-already-in-use":
+            case 'auth/email-already-in-use':
               alert('Email already in use!');
               break;
-            case "auth/invalid-emaiil":
+            case 'auth/invalid-email':
               alert('Invalid email.');
               break;
-            case "auth/operation-not-allowed":
+            case 'auth/operation-not-allowed':
               alert('Operation not allowed.');
               break;
             default:

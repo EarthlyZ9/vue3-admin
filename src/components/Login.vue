@@ -9,6 +9,7 @@
     >
       <div class="logo mb-3">
         <img
+          alt="logo"
           src="../assets/logo_crud.png"
           style="height:100px;"
         >
@@ -34,7 +35,7 @@
               <input
                 id="floatingEmail"
                 v-model="email"
-                requried
+                required
                 type="text"
                 class="form-control"
                 placeholder="User Email"
@@ -89,12 +90,12 @@
 
 <script>
 import { ref } from 'vue';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useRouter } from 'vue-router';
 export default {
   setup(){
-    const email = ref("");
-    const password = ref("");
+    const email = ref('');
+    const password = ref('');
     const errMsg = ref();
     const router = useRouter();
 
@@ -110,17 +111,17 @@ export default {
         .catch((error) => {
           console.log(error.code);
           switch (error.code) {
-            case "auth/invalid-email":
-              errMsg.value = "Invaid Email";
+            case 'auth/invalid-email':
+              errMsg.value = 'Invaid Email';
               break;
-            case "auth/user-not-found":
-              errMsg.value = "User Not Found";
+            case 'auth/user-not-found':
+              errMsg.value = 'User Not Found';
               break;
-            case "auth/wrong-password":
-              errMsg.value = "Wrong Password";
+            case 'auth/wrong-password':
+              errMsg.value = 'Wrong Password';
               break;
             default:
-              errMsg.value = "Email or password was incoreect";
+              errMsg.value = 'Email or password was incoreect';
               break;
           }
         });

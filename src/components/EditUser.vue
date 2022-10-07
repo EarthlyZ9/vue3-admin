@@ -189,10 +189,10 @@
 </template>
 
 <script>
-import { updateUser, db } from "/@/firebase";
-import { doc, getDoc } from "firebase/firestore";
-import { reactive, computed, onMounted } from "vue";
-import useVuelidate from "@vuelidate/core";
+import { updateUser, db } from '/@/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { reactive, computed } from 'vue';
+import useVuelidate from '@vuelidate/core';
 import {
   helpers,
   required,
@@ -200,26 +200,26 @@ import {
   numeric,
   maxLength,
   minLength,
-} from "@vuelidate/validators";
+} from '@vuelidate/validators';
 export default {
-  name: "EditUser",
-  props: ["id"],
+  name: 'EditUser',
+  props: ['id'],
   setup(props) {
       // eslint-disable-next-line vue/no-setup-props-destructure
     const docId = props.id;
     const state = reactive({
-      UserID: "",
-      Name: "",
-      Email: "",
-      Birth: "",
-      RR: "",
-      Mobile: "",
-      Address: "",
-      Zipcode: "",
+      UserID: '',
+      Name: '',
+      Email: '',
+      Birth: '',
+      RR: '',
+      Mobile: '',
+      Address: '',
+      Zipcode: '',
     });
 
     // get single doc
-    const docRef = doc(db, "users", docId);
+    const docRef = doc(db, 'users', docId);
     getDoc(docRef).then((doc) => {
       const data = doc.data();
       state.UserID = data.UserID;
@@ -239,30 +239,30 @@ export default {
 
     const rules = computed(() => {
       return {
-        Name: { required: helpers.withMessage("Required field.", required) },
+        Name: { required: helpers.withMessage('Required field.', required) },
         Email: {
-          required: helpers.withMessage("Required field.", required),
+          required: helpers.withMessage('Required field.', required),
           email,
         },
         Birth: {
-          required: helpers.withMessage("Required field.", required),
+          required: helpers.withMessage('Required field.', required),
           numeric,
           maxLength: maxLength(6),
           minLength: minLength(6),
         },
         RR: {
-          required: helpers.withMessage("Required field.", required),
+          required: helpers.withMessage('Required field.', required),
           numeric,
           maxLength: maxLength(7),
           minLength: minLength(7),
         },
         Mobile: {
-          required: helpers.withMessage("Required field.", required),
-          mobileReg: helpers.withMessage("Wrong format.", mobileReg),
+          required: helpers.withMessage('Required field.', required),
+          mobileReg: helpers.withMessage('Wrong format.', mobileReg),
         },
-        Address: { required: helpers.withMessage("Required field.", required) },
+        Address: { required: helpers.withMessage('Required field.', required) },
         Zipcode: {
-          required: helpers.withMessage("Required field.", required),
+          required: helpers.withMessage('Required field.', required),
           numeric,
           maxLength: maxLength(5),
           minLength: minLength(5),

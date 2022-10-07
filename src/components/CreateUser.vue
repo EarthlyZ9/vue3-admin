@@ -173,7 +173,7 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
+import { reactive, computed } from 'vue';
 import { addDoc, Timestamp } from 'firebase/firestore';
 import { usersCol, getUserID, getUserList } from '/@/firebase';
 import useVuelidate from '@vuelidate/core';
@@ -197,7 +197,7 @@ export default {
     //랜덤 UserID 생성하는 함수
     const randomId = (obj) => {
       while (true) {
-        var string_id = "";
+        var string_id = '';
         for (var i = 0; i < 5; i++) {
         const digit = Math.floor(Math.random() * 10);
         string_id += digit;
@@ -221,10 +221,10 @@ export default {
 
     //Sex 계산 함수
     const calSex = (RR) => {
-      var sex = "";
-      if (RR[0] == '1' || RR[0] == '3') {
+      var sex = '';
+      if (RR[0] === '1' || RR[0] === '3') {
         sex = 'M';
-      } else if (RR[0] == '2' || RR[0] == '4') {
+      } else if (RR[0] === '2' || RR[0] === '4') {
         sex = 'F';
       }
       return sex;
@@ -256,13 +256,13 @@ export default {
 
     const rules = computed(() => {
       return {
-        Name: { required: helpers.withMessage("Required field.", required) },
-        Email: { required: helpers.withMessage("Required field.", required), email },
-        Birth: { required: helpers.withMessage("Required field.", required), numeric, maxLength: maxLength(6), minLength: minLength(6) },
-        RR: { required: helpers.withMessage("Required field.", required), numeric, maxLength: maxLength(7), minLength: minLength(7) },
-        Mobile: { required: helpers.withMessage("Required field.", required), mobileReg: helpers.withMessage('Wrong format.', mobileReg) },
-        Address: { required: helpers.withMessage("Required field.", required) },
-        Zipcode: { required: helpers.withMessage("Required field.", required), numeric, maxLength: maxLength(5), minLength: minLength(5) },
+        Name: { required: helpers.withMessage('Required field.', required) },
+        Email: { required: helpers.withMessage('Required field.', required), email },
+        Birth: { required: helpers.withMessage('Required field.', required), numeric, maxLength: maxLength(6), minLength: minLength(6) },
+        RR: { required: helpers.withMessage('Required field.', required), numeric, maxLength: maxLength(7), minLength: minLength(7) },
+        Mobile: { required: helpers.withMessage('Required field.', required), mobileReg: helpers.withMessage('Wrong format.', mobileReg) },
+        Address: { required: helpers.withMessage('Required field.', required) },
+        Zipcode: { required: helpers.withMessage('Required field.', required), numeric, maxLength: maxLength(5), minLength: minLength(5) },
       };
     });
 
@@ -281,7 +281,7 @@ export default {
     addUser() {
       this.v$.$validate();
       if (!this.v$.$error) {
-        state.SignUp = Timestamp.fromDate(new Date()),
+        state.SignUp = Timestamp.fromDate(new Date());
         state.Latest = state.SignUp;
         state.Sex = calSex(state.RR);
         state.Age = calAge(state.Birth);

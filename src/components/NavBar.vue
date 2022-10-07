@@ -32,7 +32,7 @@
             :key="menu.key"
             :class="{ 'navbar-nav': true, 'dropdown': menu.dropdown }"
           >
-            <div v-if="menu.dropdown == false">
+            <div v-if="menu.dropdown === false">
               <router-link
                 :to="menu.url"
                 class="nav-link"
@@ -123,8 +123,8 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "vue-router";
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { useRouter } from 'vue-router';
 export default {
   name: 'NavBar',
   setup() {
@@ -146,11 +146,7 @@ export default {
     onMounted(() => {
       auth = getAuth();
       onAuthStateChanged(auth, (user) => {
-        if (user) {
-          isLoggedIn.value = true;
-        } else {
-          isLoggedIn.value = false;
-        }
+        isLoggedIn.value = !!user;
       });
     });
 

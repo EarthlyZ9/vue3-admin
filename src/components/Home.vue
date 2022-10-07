@@ -15,6 +15,7 @@
         <div class="card border-dark">
           <router-link :to="menu.url">
             <img
+              alt="home-img"
               :src="menu.img_url"
               class="card-img-top"
             >
@@ -40,7 +41,7 @@ export default {
   name: 'Home',
   setup() {
     const menu_buttons = [
-      { key: 'manage', value: 'Manage Clients', description: "List of client data.\nRead, edit, delete client data here.", img_url: 'src/assets/manage.png', url: '/user_list' },
+      { key: 'manage', value: 'Manage Clients', description: 'List of client data.\nRead, edit, delete client data here.', img_url: 'src/assets/manage.png', url: '/user_list' },
       { key: 'add', value: 'Add New Client', description: 'Add client data.\nSingle input only.', img_url: 'src/assets/add.png', url: '/create_user' },
       { key: 'bulk', value: 'Bulk Upload Client Data', description: 'Add multiple client data.\nUse CSV file only.', img_url: 'src/assets/clients.png', url: '/bulk_upload' },
     ];
