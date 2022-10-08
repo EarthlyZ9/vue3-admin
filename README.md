@@ -17,20 +17,19 @@
 
 ### 💡 Summary
 
-#### 🗓 2021.07 ~ 2021.12
+#### 🗓 2021.01
 
 #### 📋 Features
-* 회원 관리: 로그인/로그아웃, 회원가입
+* Firestore 를 이용한 CRUD 작업
+* Google OAuth 연결
+* 유저 정보 추가, 수정, 삭제 기능
 
 
 #### 🛠 Tech Stack
 * Vue3, Vite, Firebase-Firestore, CSS3, JavaScript, Bootstrap
 
 
-### 🔎 Background
-
-
-
 ### 📌 Takeaways
-
-
+* Firebase 를 이용한 data fetching
+* OAuth 원리
+* NOSQL 이해
